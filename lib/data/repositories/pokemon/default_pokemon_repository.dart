@@ -1,12 +1,11 @@
 import 'package:pokedex_graphql/data/repositories/pokemon/pokemon_repository.dart';
-import 'package:pokedex_graphql/data/services/pokemon/graphql/pokemon_graphql_service.dart';
 import 'package:pokedex_graphql/data/services/pokemon/pokemon_service.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 
 class DefaultPokemonRepository implements PokemonRepository {
   DefaultPokemonRepository({
-    PokemonService? pokemonService
-  }) : _pokemonService = pokemonService ?? PokemonGraphqlService();
+    required PokemonService pokemonService
+  }) : _pokemonService = pokemonService;
 
   final PokemonService _pokemonService;
 

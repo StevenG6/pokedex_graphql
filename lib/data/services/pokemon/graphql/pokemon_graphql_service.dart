@@ -1,5 +1,4 @@
 import 'package:graphql/client.dart';
-import 'package:pokedex_graphql/data/services/core/graphql_client.dart';
 import 'package:pokedex_graphql/data/services/core/graphql_queries.dart';
 import 'package:pokedex_graphql/data/services/pokemon/graphql/models/pokemon_graphql.dart';
 import 'package:pokedex_graphql/data/services/pokemon/graphql/models/pokemon_item_graphql.dart';
@@ -8,8 +7,8 @@ import 'package:pokedex_graphql/domain/models.dart';
 
 class PokemonGraphqlService implements PokemonService {
   PokemonGraphqlService({
-    GraphQLClient? client,
-  }) : _client = client ?? graphQLClient;
+    required GraphQLClient client,
+  }) : _client = client;
 
   final GraphQLClient _client;
 
