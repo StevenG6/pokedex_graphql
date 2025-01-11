@@ -6,7 +6,7 @@ class GraphQLQueries {
           results {
             id
             name
-            image
+            artwork
           }
         }
       }
