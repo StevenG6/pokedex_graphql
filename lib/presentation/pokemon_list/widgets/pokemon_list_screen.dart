@@ -31,7 +31,23 @@ class PokemonListBody extends StatelessWidget {
           alignment: Alignment.centerLeft,
         )
       ),
-      body: BlocBuilder<PokemonListBloc, PokemonListState>(
+      body: BlocConsumer<PokemonListBloc, PokemonListState>(
+        listenWhen: (previous, current) {
+          return (current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
+        },
+        listener: (context, state) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.error!,
+                textAlign: TextAlign.center,
+              ),
+            )
+          );
+        },
+        buildWhen: (previous, current) {
+          return !(current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
+        },
         builder: (context, state) {
           switch (state.status) {
             case PokemonListStatus.initial:
@@ -40,7 +56,7 @@ class PokemonListBody extends StatelessWidget {
 
             case PokemonListStatus.success:
               return PokemonList(items: state.pokemonItems);
-              
+
             case PokemonListStatus.failure:
               return ErrorMessage(
                 message: state.error!,
