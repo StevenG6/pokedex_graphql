@@ -67,6 +67,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/pokemon_types/
 
   fonts:
     - family: Chakra Petch
