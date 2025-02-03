@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 import 'package:pokedex_graphql/presentation/core/theme/colors.dart';
+import 'package:pokedex_graphql/presentation/pokemon/widgets/pokemon_screen.dart';
 import 'package:pokedex_graphql/utils/string_extension.dart';
 
 class PokemonListItem extends StatelessWidget {
@@ -8,6 +9,24 @@ class PokemonListItem extends StatelessWidget {
     super.key,
     required this.item
   });
+
+  final PokemonItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => PokemonScreen(pokemon: item.name))
+        );
+      },
+      child: _PokemonItemView(item)
+    );
+  }
+}
+
+class _PokemonItemView extends StatelessWidget {
+  const _PokemonItemView(this.item);
 
   final PokemonItem item;
 

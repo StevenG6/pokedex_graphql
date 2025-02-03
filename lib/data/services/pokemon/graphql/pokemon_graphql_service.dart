@@ -50,16 +50,22 @@ class PokemonGraphqlService implements PokemonService {
 
     if (result.parsedData == null) throw Exception('An error has occurred while fetching data for $name.');
 
+    final pokemon = result.parsedData!;
+
     return Pokemon(
-      id: result.parsedData!.id,
-      name: result.parsedData!.name,
+      id: pokemon.id,
+      name: pokemon.name,
       sprites: PokemonSprites(
-        front: result.parsedData!.frontSprite,
-        back: result.parsedData!.backSprite
+        front: pokemon.frontSprite,
+        back: pokemon.backSprite
       ),
-      types: result.parsedData!.types
-          .map((type) => PokemonType(name: type))
-          .toList()
+      types: pokemon.types
+          .map(
+            (type) => PokemonType.values.firstWhere(
+              (element) => element.name == type,
+              orElse: () => PokemonType.unknown
+            )
+          ).toList()
     );
   }
 }
