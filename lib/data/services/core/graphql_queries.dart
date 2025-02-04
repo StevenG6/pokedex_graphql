@@ -19,6 +19,8 @@ class GraphQLQueries {
         pokemon(name: $name) {
           id
           name
+          height
+          weight
           sprites {
             front_default
             back_default

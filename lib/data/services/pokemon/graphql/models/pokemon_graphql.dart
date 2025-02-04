@@ -2,6 +2,8 @@ class PokemonGraphQL {
   PokemonGraphQL({
     required this.id,
     required this.name,
+    required this.height,
+    required this.weight,
     required this.frontSprite,
     required this.backSprite,
     required this.types
@@ -9,6 +11,8 @@ class PokemonGraphQL {
 
   final int id;
   final String name;
+  final double height;
+  final double weight;
   final String frontSprite;
   final String backSprite;
   final List<String> types;
@@ -21,6 +25,8 @@ class PokemonGraphQL {
     return PokemonGraphQL(
       id: int.parse(data['id'].toString()),
       name: data['name'].toString(),
+      height: double.parse(data['height'].toString()),
+      weight: double.parse(data['weight'].toString()),
       frontSprite: spritesData['front_default'].toString(),
       backSprite: spritesData['back_default'].toString(),
       types: typesData

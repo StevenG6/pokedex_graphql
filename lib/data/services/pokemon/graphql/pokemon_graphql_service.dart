@@ -55,6 +55,8 @@ class PokemonGraphqlService implements PokemonService {
     return Pokemon(
       id: pokemon.id,
       name: pokemon.name,
+      height: pokemon.height,
+      weight: pokemon.weight,
       sprites: PokemonSprites(
         front: pokemon.frontSprite,
         back: pokemon.backSprite
