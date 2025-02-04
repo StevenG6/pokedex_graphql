@@ -30,6 +30,12 @@ class GraphQLQueries {
               name
             }
           }
+          stats {
+            base_stat
+            stat {
+              name
+            }
+          }
         }
       }
     '''

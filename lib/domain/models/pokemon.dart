@@ -7,7 +7,8 @@ class Pokemon {
     required this.height,
     required this.weight,
     required this.sprites,
-    required this.types
+    required this.types,
+    required this.stats,
   });
 
   final int id;
@@ -16,4 +17,5 @@ class Pokemon {
   final double weight;
   final PokemonSprites sprites;
   final List<PokemonType> types;
+  final PokemonStats stats;
 }

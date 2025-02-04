@@ -67,7 +67,15 @@ class PokemonGraphqlService implements PokemonService {
               (element) => element.name == type,
               orElse: () => PokemonType.unknown
             )
-          ).toList()
+          ).toList(),
+      stats: PokemonStats(
+        hp: pokemon.stats.hp,
+        attack: pokemon.stats.attack,
+        defense: pokemon.stats.defense,
+        specialAttack: pokemon.stats.specialAttack,
+        specialDefense: pokemon.stats.specialDefense,
+        speed: pokemon.stats.speed,
+      ),
     );
   }
 }

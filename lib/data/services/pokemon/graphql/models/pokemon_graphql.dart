@@ -1,3 +1,5 @@
+import 'pokemon_stats_graphql.dart';
+
 class PokemonGraphQL {
   PokemonGraphQL({
     required this.id,
@@ -6,7 +8,8 @@ class PokemonGraphQL {
     required this.weight,
     required this.frontSprite,
     required this.backSprite,
-    required this.types
+    required this.types,
+    required this.stats,
   });
 
   final int id;
@@ -16,6 +19,7 @@ class PokemonGraphQL {
   final String frontSprite;
   final String backSprite;
   final List<String> types;
+  final PokemonStatsGraphQL stats;
 
   factory PokemonGraphQL.fromJSON(Map<String, dynamic> json) {
     final data = json['pokemon'];
@@ -31,7 +35,8 @@ class PokemonGraphQL {
       backSprite: spritesData['back_default'].toString(),
       types: typesData
           .map((e) => _pokemonTypeFromJSON(e['type']))
-          .toList()
+          .toList(),
+      stats: PokemonStatsGraphQL.fromJSON(data),
     );
   }
 
