@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/details_tabs.dart';
+import 'package:pokedex_graphql/presentation/pokemon/widgets/sprites.dart';
 import 'package:pokedex_graphql/utils/pokemon_extension.dart';
 import 'package:pokedex_graphql/presentation/core/widgets.dart';
 import 'package:pokedex_graphql/presentation/pokemon/bloc/pokemon_bloc.dart';
@@ -78,28 +79,8 @@ class PokemonDetails extends StatelessWidget {
       child: Column(
         spacing: 20,
         children: [
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: pokemon.types.first.color.withAlpha(50),
-              border: Border.all(color: Colors.black12),
-              borderRadius: const BorderRadius.all(Radius.circular(5)),
-              image: DecorationImage(
-                image: AssetImage(pokemon.types.first.icon),
-                opacity: 0.4,
-                scale: 0.5
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [pokemon.sprites.front, pokemon.sprites.back].map(
-                (sprite) => Image.network(
-                  sprite,
-                  scale: 0.6,
-                )
-              ).toList(),
-            ),
-          ),
-          
+          Sprites(pokemon: pokemon),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 10,

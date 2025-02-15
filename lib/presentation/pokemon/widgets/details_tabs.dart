@@ -22,7 +22,7 @@ class PokemonDetailsTabs extends StatelessWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
               color: AppColors.highlight.withAlpha(150),
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
               border: const Border(
                 left: BorderSide(),
                 top: BorderSide(),
@@ -47,7 +47,7 @@ class PokemonDetailsTabs extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: AppColors.cellBackground,
-              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(8)),
+              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
               border: Border.all(),
             ),
             height: 200,
