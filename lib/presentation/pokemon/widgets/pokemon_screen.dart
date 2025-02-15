@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/details_tabs.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/sprites.dart';
-import 'package:pokedex_graphql/utils/pokemon_extension.dart';
+import 'package:pokedex_graphql/presentation/pokemon/widgets/types.dart';
 import 'package:pokedex_graphql/presentation/core/widgets.dart';
 import 'package:pokedex_graphql/presentation/pokemon/bloc/pokemon_bloc.dart';
 import 'package:pokedex_graphql/utils/string_extension.dart';
@@ -81,42 +81,11 @@ class PokemonDetails extends StatelessWidget {
         children: [
           Sprites(pokemon: pokemon),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 10,
-            children: pokemon.types.map(
-              (type) => _TypeChip(type)
-            ).toList()
-          ),
+          Types(types: pokemon.types),
 
           PokemonDetailsTabs(pokemon: pokemon),
         ]
       )
-    );
-  }
-}
-
-class _TypeChip extends StatelessWidget {
-  const _TypeChip(this.type);
-
-  final PokemonType type;
-
-  @override
-  Widget build(BuildContext context) {
-    return Chip(
-      label: Text(type.name.capitalize()),
-      labelStyle: const TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 1
-      ),
-      avatar: Image.asset(
-        type.icon,
-        color: Colors.white,
-      ),
-      backgroundColor: type.color,
-      side: const BorderSide(color: Colors.black12),
     );
   }
 }

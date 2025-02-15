@@ -12,10 +12,10 @@ class PokedexPainter extends CustomPainter {
     final width = size.width;
 
     final paint = Paint()..color = AppColors.cellBackground;
-    canvas.drawRRect(RRect.fromLTRBR(0, 0, width, height, Radius.circular(30)), paint);
+    canvas.drawRRect(RRect.fromLTRBR(0, 0, width, height, const Radius.circular(30)), paint);
 
     paint.color = backgroundColor;
-    canvas.drawRRect(RRect.fromLTRBR(width * .1, height * .15, width * .9, height * .85, Radius.circular(20)), paint);
+    canvas.drawRRect(RRect.fromLTRBR(width * .1, height * .15, width * .9, height * .85, const Radius.circular(20)), paint);
 
     paint
         ..color = Colors.redAccent
@@ -30,8 +30,8 @@ class PokedexPainter extends CustomPainter {
         ..color = Colors.black
         ..strokeWidth = 1;
 
-    canvas.drawRRect(RRect.fromLTRBR(0, 1, width, height, Radius.circular(30)), paint);
-    canvas.drawRRect(RRect.fromLTRBR(width * .1, height * .15, width * .9, height * .85, Radius.circular(20)), paint);
+    canvas.drawRRect(RRect.fromLTRBR(0, 1, width, height, const Radius.circular(30)), paint);
+    canvas.drawRRect(RRect.fromLTRBR(width * .1, height * .15, width * .9, height * .85, const Radius.circular(20)), paint);
     
     canvas.drawCircle(Offset(width * .45, height * .08), 7, paint);
     canvas.drawCircle(Offset(width * .55, height * .08), 7, paint);
