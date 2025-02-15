@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_graphql/domain/models.dart';
+import 'package:pokedex_graphql/presentation/core/painters/background_painter.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/details_tabs.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/sprites.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/types.dart';
@@ -42,23 +43,26 @@ class PokemonView extends StatelessWidget {
           icon: const Icon(Icons.arrow_back)
         ),
       ),
-      body: BlocBuilder<PokemonBloc, PokemonState>(
-        builder: (context, state) {
-          switch (state) {
-            case PokemonInitial():
-            case PokemonLoadInProgress():
-              return const LoadingIndicator();
+      body: CustomPaint(
+        painter: BackgroundPainter(),
+        child: BlocBuilder<PokemonBloc, PokemonState>(
+          builder: (context, state) {
+            switch (state) {
+              case PokemonInitial():
+              case PokemonLoadInProgress():
+                return const LoadingIndicator();
 
-            case PokemonLoadSuccess():
-              return PokemonDetails(pokemon: state.pokemon);
+              case PokemonLoadSuccess():
+                return PokemonDetails(pokemon: state.pokemon);
 
-            case PokemonLoadFailure():
-              return ErrorMessage(
-                message: state.error,
-                onButtonPressed: () => context.read<PokemonBloc>().add(PokemonRetryPressed(pokemon))
-              );
+              case PokemonLoadFailure():
+                return ErrorMessage(
+                  message: state.error,
+                  onButtonPressed: () => context.read<PokemonBloc>().add(PokemonRetryPressed(pokemon))
+                );
+            }
           }
-        }
+        )
       )
     );
   }

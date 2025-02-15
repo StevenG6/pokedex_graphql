@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex_graphql/presentation/core/painters/background_painter.dart';
 import 'package:pokedex_graphql/presentation/core/widgets.dart';
 import 'package:pokedex_graphql/presentation/pokemon_list/bloc/pokemon_list_bloc.dart';
 import 'package:pokedex_graphql/presentation/pokemon_list/widgets/pokemon_list.dart';
@@ -31,39 +32,42 @@ class PokemonListBody extends StatelessWidget {
           alignment: Alignment.centerLeft,
         )
       ),
-      body: BlocConsumer<PokemonListBloc, PokemonListState>(
-        listenWhen: (previous, current) {
-          return (current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
-        },
-        listener: (context, state) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                state.error!,
-                textAlign: TextAlign.center,
-              ),
-            )
-          );
-        },
-        buildWhen: (previous, current) {
-          return !(current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
-        },
-        builder: (context, state) {
-          switch (state.status) {
-            case PokemonListStatus.initial:
-            case PokemonListStatus.loading:
-              return const LoadingIndicator();
+      body: CustomPaint(
+        painter: BackgroundPainter(),
+        child: BlocConsumer<PokemonListBloc, PokemonListState>(
+          listenWhen: (previous, current) {
+            return (current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
+          },
+          listener: (context, state) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.error!,
+                  textAlign: TextAlign.center,
+                ),
+              )
+            );
+          },
+          buildWhen: (previous, current) {
+            return !(current.status == PokemonListStatus.failure && current.pokemonItems.isNotEmpty);
+          },
+          builder: (context, state) {
+            switch (state.status) {
+              case PokemonListStatus.initial:
+              case PokemonListStatus.loading:
+                return const LoadingIndicator();
 
-            case PokemonListStatus.success:
-              return PokemonList(items: state.pokemonItems);
+              case PokemonListStatus.success:
+                return PokemonList(items: state.pokemonItems);
 
-            case PokemonListStatus.failure:
-              return ErrorMessage(
-                message: state.error!,
-                onButtonPressed: () => context.read<PokemonListBloc>().add(PokemonListRetryRequested())
-              );
+              case PokemonListStatus.failure:
+                return ErrorMessage(
+                  message: state.error!,
+                  onButtonPressed: () => context.read<PokemonListBloc>().add(PokemonListRetryRequested())
+                );
+            }
           }
-        }
+        ),
       ),
     );
   }
