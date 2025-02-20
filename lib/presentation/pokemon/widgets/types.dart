@@ -30,20 +30,33 @@ class _TypeChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(type.name.capitalize()),
-      labelStyle: const TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        fontWeight: FontWeight.w700,
-        letterSpacing: 1
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+      decoration: BoxDecoration(
+        color: type.color,
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [BoxShadow(offset: Offset(2, 2))]
       ),
-      avatar: Image.asset(
-        type.icon,
-        color: Colors.white,
-      ),
-      backgroundColor: type.color,
-      side: const BorderSide(color: Colors.black12),
+      child: Row(
+        spacing: 8,
+        children: [
+          Image.asset(
+            type.icon,
+            color: Colors.white,
+            height: 28,
+          ),
+          Text(
+            type.name.capitalize(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1
+            ),
+          )
+        ],
+      )
     );
   }
 }

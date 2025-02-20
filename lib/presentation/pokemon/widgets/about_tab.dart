@@ -74,6 +74,7 @@ class _PropertyChip extends StatelessWidget {
       spacing: 4,
       children: [
         Row(
+          spacing: 2,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(icon),
