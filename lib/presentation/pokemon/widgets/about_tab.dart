@@ -16,17 +16,17 @@ class AboutTab extends StatelessWidget {
     return Column(
       spacing: 15,
       children: [
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text.rich(
           TextSpan(
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w700
             ),
             children: [
-              TextSpan(text: '#', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+              const TextSpan(text: '#', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
               TextSpan(text: pokemon.id.toString().padLeft(3, '0')),
-              TextSpan(text: ' - ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+              const TextSpan(text: ' - ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
               TextSpan(text: pokemon.name.capitalize()),
             ]
           ),
@@ -41,7 +41,7 @@ class AboutTab extends StatelessWidget {
               value: pokemon.weight,
               icon: Icons.scale
             ),
-            SizedBox(height: 55, child: VerticalDivider(thickness: 0.5, color: Colors.black45)),
+            const SizedBox(height: 55, child: VerticalDivider(thickness: 0.5, color: Colors.black45)),
             _PropertyChip(
               title: 'Height',
               description: 'Meters',
@@ -80,24 +80,24 @@ class _PropertyChip extends StatelessWidget {
             Icon(icon),
             Text(
               title,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             )
           ],
         ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           decoration: BoxDecoration(
             color: AppColors.highlight,
             border: Border.all(),
             borderRadius: BorderRadius.circular(15),
-            boxShadow: [BoxShadow(offset: Offset(2, 2))]
+            boxShadow: const [BoxShadow(offset: Offset(2, 2))]
           ),
           child: Text.rich(
             TextSpan(
               children: [
                 TextSpan(
                   text: (value / 10).toString(),
-                  style: TextStyle(                        
+                  style: const TextStyle(                        
                     fontSize: 16,
                     fontWeight: FontWeight.w900
                   )

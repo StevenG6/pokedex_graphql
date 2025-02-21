@@ -31,12 +31,12 @@ class _TypeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
       decoration: BoxDecoration(
         color: type.color,
         border: Border.all(),
         borderRadius: BorderRadius.circular(15),
-        boxShadow: [BoxShadow(offset: Offset(2, 2))]
+        boxShadow: const [BoxShadow(offset: Offset(2, 2))]
       ),
       child: Row(
         spacing: 8,

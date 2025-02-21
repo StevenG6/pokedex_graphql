@@ -19,30 +19,30 @@ class PokemonDetailsTabs extends StatelessWidget {
       length: 2,
       child: Column(
         children: [
-          TabBar(
+          const TabBar(
             isScrollable: true,
             tabAlignment: TabAlignment.start,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
               color: AppColors.highlight,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-              border: const Border(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+              border: Border(
                 left: BorderSide(),
                 top: BorderSide(),
                 right: BorderSide()
               ),
             ),
             dividerColor: Colors.transparent,
-            labelStyle: const TextStyle(
+            labelStyle: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700
             ),
-            unselectedLabelStyle: const TextStyle(
+            unselectedLabelStyle: TextStyle(
               fontWeight: FontWeight.w400
             ),
             labelColor: Colors.black,
             unselectedLabelColor: Colors.black54,
-            tabs: const [
+            tabs: [
               Tab(text: 'About', height: _tabHeight),
               Tab(text: 'Stats', height: _tabHeight)
             ]
@@ -53,7 +53,7 @@ class PokemonDetailsTabs extends StatelessWidget {
               color: AppColors.cellBackground,
               borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
               border: Border.all(),
-              boxShadow: [BoxShadow(offset: Offset(4, 4))]
+              boxShadow: const [BoxShadow(offset: Offset(6, 6))]
             ),
             height: 200,
             child: TabBarView(

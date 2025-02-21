@@ -31,67 +31,60 @@ class _PokemonItemView extends StatelessWidget {
   final PokemonItem item;
 
   @override
-  Widget build(BuildContext context) {
-    const border = Border(
-      top: BorderSide(color: Colors.black, width: 1.5),
-      right: BorderSide(color: Colors.black, width: 3.5),
-      bottom: BorderSide(color: Colors.black, width: 3.5),
-      left: BorderSide(color: Colors.black, width: 1.5),
-    );
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.elliptical(30, 20)),
-          color: AppColors.cellBackground,
-          border: border
-        ),
-        child: Stack(
-          alignment: Alignment.center,
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              width: 80,
-              right: 10,
-              top: -10,
-              child: DecoratedBox(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(15, 10)),
-                  color: AppColors.cellBackground,
-                  border: border
-                ),
-                child: Text(
-                  '#${item.id.toString().padLeft(3, '0')}',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700
-                  )
-                ),
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 10.0),
+    child: DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.elliptical(30, 20)),
+        color: AppColors.cellBackground,
+        border: Border.all(width: 1.5),
+        boxShadow: const [BoxShadow(offset: Offset(2.5, 2.5))]
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            width: 80,
+            right: 10,
+            top: -10,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.elliptical(15, 10)),
+                color: AppColors.cellBackground,
+                border: Border.all(width: 1.5),
+                boxShadow: const [BoxShadow(offset: Offset(2, 2))]
+              ),
+              child: Text(
+                '#${item.id.toString().padLeft(3, '0')}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+                )
               ),
             ),
+          ),
 
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.network(
-                  item.artwork,
-                ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                item.artwork,
+              ),
 
-                Text(
-                  item.name.capitalize(),
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  )
+              Text(
+                item.name.capitalize(),
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 )
-              ]
-            )
-          ]
-        )
+              )
+            ]
+          )
+        ]
       )
-    );
-  }
+    )
+  );
 }
