@@ -2,7 +2,7 @@ import 'package:graphql/client.dart';
 
 const _graphQLEndpoint = "https://graphql-pokeapi.graphcdn.app/";
 
-GraphQLClient get graphQLClient => GraphQLClient(
+final GraphQLClient graphQLClient = GraphQLClient(
   link: HttpLink(
     _graphQLEndpoint,
     defaultHeaders: {

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:pokedex_graphql/data/repositories/pokemon/pokemon_repository.dart';
+import 'package:pokedex_graphql/domain/repositories/pokemon_repository.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 
 part 'pokemon_event.dart';

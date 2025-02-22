@@ -1,4 +1,4 @@
-import 'package:pokedex_graphql/data/repositories/pokemon/pokemon_repository.dart';
+import 'package:pokedex_graphql/domain/repositories/pokemon_repository.dart';
 import 'package:pokedex_graphql/data/services/pokemon/pokemon_service.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 
