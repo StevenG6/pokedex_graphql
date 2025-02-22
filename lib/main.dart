@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_graphql/presentation/core/theme/colors.dart';
-import 'package:pokedex_graphql/presentation/pokemon_list/widgets/pokemon_list_screen.dart';
+import 'package:pokedex_graphql/presentation/home/widgets/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:pokedex_graphql/config/dependencies.dart';
 
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Chakra Petch'
       ),
-      home: const PokemonListScreen(),
+      home: const HomeScreen(),
     );
   }
 }

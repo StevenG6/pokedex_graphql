@@ -1,25 +1,25 @@
-part of 'pokemon_list_bloc.dart';
+part of 'home_bloc.dart';
 
-enum PokemonListStatus { initial, loading, success, failure }
+enum HomeStatus { initial, loading, success, failure }
 
 @immutable
-final class PokemonListState extends Equatable {
-  const PokemonListState({
-    this.status = PokemonListStatus.initial,
+final class HomeState extends Equatable {
+  const HomeState({
+    this.status = HomeStatus.initial,
     this.pokemonItems = const <PokemonItem>[],
     this.error,
   });
 
-  final PokemonListStatus status;
+  final HomeStatus status;
   final List<PokemonItem> pokemonItems;
   final String? error;
 
-  PokemonListState copyWith({
-    PokemonListStatus? status,
+  HomeState copyWith({
+    HomeStatus? status,
     List<PokemonItem>? pokemonItems,
     String? error,
   }) {
-    return PokemonListState(
+    return HomeState(
       status: status ?? this.status,
       pokemonItems: pokemonItems ?? this.pokemonItems,
       error: error ?? this.error

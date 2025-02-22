@@ -7,17 +7,17 @@ import 'package:pokedex_graphql/data/repositories/pokemon/pokemon_repository.dar
 import 'package:pokedex_graphql/domain/models/pokemon_item.dart';
 import 'package:pokedex_graphql/utils/event_transformer.dart';
 
-part 'pokemon_list_event.dart';
-part 'pokemon_list_state.dart';
+part 'home_event.dart';
+part 'home_state.dart';
 
-class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
-  PokemonListBloc({
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  HomeBloc({
     required PokemonRepository pokemonRepository
   }) : _pokemonRepository = pokemonRepository,
-       super(const PokemonListState()) {
-    on<PokemonListStarted>(_loadPokemonList);
-    on<PokemonListRetryRequested>(_loadPokemonList);
-    on<PokemonListScrollEndReached>(
+       super(const HomeState()) {
+    on<HomeStarted>(_loadPokemonList);
+    on<HomeRetryRequested>(_loadPokemonList);
+    on<HomeScrollEndReached>(
       _loadMoreItems,
       transformer: throttleDroppable(const Duration(seconds: 1))
     );
@@ -26,13 +26,13 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
   final PokemonRepository _pokemonRepository;
 
   Future<void> _loadPokemonList(
-    PokemonListEvent event,
-    Emitter<PokemonListState> emit
+    HomeEvent event,
+    Emitter<HomeState> emit
   ) async {
     try {
       emit(
         state.copyWith(
-          status: PokemonListStatus.loading,
+          status: HomeStatus.loading,
           error: null
         )
       );
@@ -41,7 +41,7 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
 
       emit(
         state.copyWith(
-          status: PokemonListStatus.success,
+          status: HomeStatus.success,
           pokemonItems: pokemonItems,
         )
       );
@@ -50,7 +50,7 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
 
       emit(
         state.copyWith(
-          status: PokemonListStatus.failure,
+          status: HomeStatus.failure,
           error: 'An error occurred while fetching the Pokémon list.'
         )
       );
@@ -58,15 +58,15 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
   }
 
   Future<void> _loadMoreItems(
-    PokemonListScrollEndReached event,
-    Emitter<PokemonListState> emit
+    HomeScrollEndReached event,
+    Emitter<HomeState> emit
   ) async {
     try {
       final pokemonItems = await _pokemonRepository.pokemonList(offset: state.pokemonItems.length);
 
       emit(
         state.copyWith(
-          status: PokemonListStatus.success,
+          status: HomeStatus.success,
           pokemonItems: [...state.pokemonItems, ...pokemonItems],
         )
       );
@@ -75,7 +75,7 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
 
       emit(
         state.copyWith(
-          status: PokemonListStatus.failure,
+          status: HomeStatus.failure,
           error: 'Oh no! An error occurred while fetching more Pokémon.'
         )
       );

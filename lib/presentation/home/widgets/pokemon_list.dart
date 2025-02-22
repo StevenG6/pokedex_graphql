@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex_graphql/domain/models/pokemon_item.dart';
-import 'package:pokedex_graphql/presentation/pokemon_list/bloc/pokemon_list_bloc.dart';
-import 'package:pokedex_graphql/presentation/pokemon_list/widgets/pokemon_list_item.dart';
+import 'package:pokedex_graphql/presentation/home/bloc/home_bloc.dart';
+import 'package:pokedex_graphql/presentation/home/widgets/pokemon_list_item.dart';
 
 class PokemonList extends StatefulWidget {
   const PokemonList({
@@ -50,7 +50,7 @@ class _PokemonListState extends State<PokemonList> {
   }
 
   void _onScroll() {
-    if (_isScrollAtBottom) context.read<PokemonListBloc>().add(PokemonListScrollEndReached());
+    if (_isScrollAtBottom) context.read<HomeBloc>().add(HomeScrollEndReached());
   }
 
   bool get _isScrollAtBottom {
