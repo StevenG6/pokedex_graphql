@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 import 'package:pokedex_graphql/presentation/core/painters/pokedex_painter.dart';
+import 'package:pokedex_graphql/presentation/core/widgets.dart';
 import 'package:pokedex_graphql/utils/pokemon_extension.dart';
 
 class Sprites extends StatelessWidget {
@@ -37,6 +38,7 @@ class Sprites extends StatelessWidget {
                 (sprite) => Image.network(
                   sprite,
                   scale: 0.5,
+                  errorBuilder: (_, __, ___) => const ErrorImage()
                 )
               ).toList(),
             ),

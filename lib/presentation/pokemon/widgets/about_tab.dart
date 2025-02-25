@@ -30,6 +30,7 @@ class AboutTab extends StatelessWidget {
               TextSpan(text: pokemon.name.capitalize()),
             ]
           ),
+          textAlign: TextAlign.center,
         ),
         Row(
           spacing: 10,

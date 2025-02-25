@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_graphql/domain/models.dart';
 import 'package:pokedex_graphql/presentation/core/theme/colors.dart';
+import 'package:pokedex_graphql/presentation/core/widgets.dart';
 import 'package:pokedex_graphql/presentation/pokemon/widgets/pokemon_screen.dart';
 import 'package:pokedex_graphql/utils/string_extension.dart';
 
@@ -66,22 +67,26 @@ class _PokemonItemView extends StatelessWidget {
             ),
           ),
 
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network(
-                item.artwork,
-              ),
-
-              Text(
-                item.name.capitalize(),
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network(
+                  item.artwork,
+                  errorBuilder: (_, __, ___) => const ErrorImage()
+                ),
+            
+                Text(
+                  item.name.capitalize(),
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  )
                 )
-              )
-            ]
+              ]
+            )
           )
         ]
       )
