@@ -21,12 +21,12 @@ https://github.com/user-attachments/assets/ee49c694-3694-4f80-b375-da220acb2ee0
 ## 🚀 Running the app
 To run this app locally, execute the following commands:
 ```
-https://github.com/StevenG6/pokedex_graphql.git
+git clone https://github.com/StevenG6/pokedex_graphql.git
 cd pokedex_graphql
 flutter pub get
 flutter run
 ```
-**Minimum requirement: Flutter 3.27.3**
+**Minimum Flutter version required: `3.27.3`**
 
 
 ## 🙏 Acknowledgements
