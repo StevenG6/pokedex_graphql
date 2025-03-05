@@ -88,7 +88,7 @@ class _PropertyChip extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           decoration: BoxDecoration(
-            color: AppColors.highlight,
+            color: AppColors.primary,
             border: Border.all(),
             borderRadius: BorderRadius.circular(15),
             boxShadow: const [BoxShadow(offset: Offset(2, 2))]

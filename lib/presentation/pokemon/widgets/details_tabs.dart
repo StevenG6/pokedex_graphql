@@ -24,7 +24,7 @@ class PokemonDetailsTabs extends StatelessWidget {
             tabAlignment: TabAlignment.start,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
-              color: AppColors.highlight,
+              color: AppColors.primary,
               borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
               border: Border(
                 left: BorderSide(),
