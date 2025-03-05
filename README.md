@@ -19,23 +19,14 @@ https://github.com/user-attachments/assets/ee49c694-3694-4f80-b375-da220acb2ee0
 - [🔍 Pokémon Details Screen](https://github.com/user-attachments/assets/e22358b4-1f99-476a-aa67-ea8f40797f88)
 
 ## 🚀 Running the app
-To run this app locally, follow the steps below:
-1. Clone the repository:
+To run this app locally, execute the following commands:
 ```
 https://github.com/StevenG6/pokedex_graphql.git
-```
-2. Navigate to the project directory:
-```
 cd pokedex_graphql
-```
-3. Install the dependencies:
-```
 flutter pub get
-```
-4. Run the app:
-```
 flutter run
 ```
+**Minimum requirement: Flutter 3.27.3**
 
 
 ## 🙏 Acknowledgements
