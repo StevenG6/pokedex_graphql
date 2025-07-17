@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+
 # pokedex_graphql
 
 A simple Pokédex App designed to explore basic Pokémon data. It is built with Flutter and GraphQL, using BLoC for state management and GraphQL to optimize network requests. The interface is simple, with elements that stand out for their carefully crafted details.
@@ -34,4 +36,4 @@ flutter run
 - The design of this app was inspired by a concept on [Dribble](https://dribbble.com/shots/19287892-Pokemon-Neobrutalism).
 
 ## 📄 License
-This project is licensed under the MIT License. [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+This project is licensed under the MIT License.
