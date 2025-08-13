@@ -10,7 +10,7 @@ class DefaultPokemonRepository implements PokemonRepository {
   final PokemonService _pokemonService;
 
   @override
-  Future<List<PokemonItem>> pokemonList({int limit = 20, int offset = 0}) async {
+  Future<List<PokemonSummary>> pokemonList({int limit = 20, int offset = 0}) async {
     return _pokemonService.pokemonList(limit: limit, offset: offset);
   }
 

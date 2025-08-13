@@ -6,17 +6,17 @@ enum HomeStatus { initial, loading, success, failure }
 final class HomeState extends Equatable {
   const HomeState({
     this.status = HomeStatus.initial,
-    this.pokemonItems = const <PokemonItem>[],
+    this.pokemonItems = const <PokemonSummary>[],
     this.error,
   });
 
   final HomeStatus status;
-  final List<PokemonItem> pokemonItems;
+  final List<PokemonSummary> pokemonItems;
   final String? error;
 
   HomeState copyWith({
     HomeStatus? status,
-    List<PokemonItem>? pokemonItems,
+    List<PokemonSummary>? pokemonItems,
     String? error,
   }) {
     return HomeState(

@@ -1,5 +1,5 @@
-class PokemonItem {
-  PokemonItem({
+class PokemonSummary {
+  PokemonSummary({
     required this.id,
     required this.name,
     required this.artwork

@@ -13,7 +13,7 @@ class PokemonGraphqlService implements PokemonService {
   final GraphQLClient _client;
 
   @override
-  Future<List<PokemonItem>> pokemonList({required int limit, required int offset}) async {
+  Future<List<PokemonSummary>> pokemonList({required int limit, required int offset}) async {
     final queryOptions = QueryOptions(
       document: gql(GraphQLQueries.getPokemonList),
       variables: {
@@ -30,7 +30,7 @@ class PokemonGraphqlService implements PokemonService {
     if (result.parsedData == null) throw Exception('An error has occurred while fetching the Pokémon list.');
 
     return result.parsedData!.results
-        .map((e) => PokemonItem(id: e.id, name: e.name, artwork: e.artwork))
+        .map((e) => PokemonSummary(id: e.id, name: e.name, artwork: e.artwork))
         .toList();
   }
 

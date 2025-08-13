@@ -11,7 +11,7 @@ class PokemonListItem extends StatelessWidget {
     required this.item
   });
 
-  final PokemonItem item;
+  final PokemonSummary item;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PokemonListItem extends StatelessWidget {
 class _PokemonItemView extends StatelessWidget {
   const _PokemonItemView(this.item);
 
-  final PokemonItem item;
+  final PokemonSummary item;
 
   @override
   Widget build(BuildContext context) => Padding(

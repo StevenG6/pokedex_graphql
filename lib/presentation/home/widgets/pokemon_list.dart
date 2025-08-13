@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex_graphql/domain/models/pokemon_item.dart';
+import 'package:pokedex_graphql/domain/models/pokemon_summary.dart';
 import 'package:pokedex_graphql/presentation/home/bloc/home_bloc.dart';
 import 'package:pokedex_graphql/presentation/home/widgets/pokemon_list_item.dart';
 
@@ -10,7 +10,7 @@ class PokemonList extends StatefulWidget {
     required this.items
   });
 
-  final List<PokemonItem> items;
+  final List<PokemonSummary> items;
 
   @override
   State<PokemonList> createState() => _PokemonListState();
