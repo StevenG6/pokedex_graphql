@@ -35,17 +35,20 @@ class _PokemonListState extends State<PokemonList> {
 
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+
     return GridView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.all(8),
       controller: _scrollController,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: screenWidth >= 600 ? 3 : 2,
         crossAxisSpacing: 8,
         mainAxisSpacing: 8,
-        childAspectRatio: 0.8
+        childAspectRatio: 0.8,
       ),
       itemCount: widget.items.length,
-      itemBuilder: (context, index) => PokemonListItem(item: widget.items[index])
+      itemBuilder: (context, index) =>
+          PokemonListItem(item: widget.items[index]),
     );
   }
 

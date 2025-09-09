@@ -34,39 +34,43 @@ class HomeView extends StatelessWidget {
       ),
       body: CustomPaint(
         painter: BackgroundPainter(),
-        child: BlocConsumer<HomeBloc, HomeState>(
-          listenWhen: (previous, current) {
-            return (current.status == HomeStatus.failure && current.pokemonItems.isNotEmpty);
-          },
-          listener: (context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+        child: SafeArea(
+          bottom: false,
+          child: BlocConsumer<HomeBloc, HomeState>(
+            listenWhen: (previous, current) {
+              return (current.status == HomeStatus.failure &&
+                  current.pokemonItems.isNotEmpty);
+            },
+            listener: (context, state) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(
                   state.error!,
                   textAlign: TextAlign.center,
                 ),
-              )
-            );
-          },
-          buildWhen: (previous, current) {
-            return !(current.status == HomeStatus.failure && current.pokemonItems.isNotEmpty);
-          },
-          builder: (context, state) {
-            switch (state.status) {
-              case HomeStatus.initial:
-              case HomeStatus.loading:
-                return const LoadingIndicator();
+              ));
+            },
+            buildWhen: (previous, current) {
+              return !(current.status == HomeStatus.failure &&
+                  current.pokemonItems.isNotEmpty);
+            },
+            builder: (context, state) {
+              switch (state.status) {
+                case HomeStatus.initial:
+                case HomeStatus.loading:
+                  return const LoadingIndicator();
 
-              case HomeStatus.success:
-                return PokemonList(items: state.pokemonItems);
+                case HomeStatus.success:
+                  return PokemonList(items: state.pokemonItems);
 
-              case HomeStatus.failure:
-                return ErrorMessage(
-                  message: state.error!,
-                  onButtonPressed: () => context.read<HomeBloc>().add(HomeRetryRequested())
-                );
-            }
-          }
+                case HomeStatus.failure:
+                  return ErrorMessage(
+                    message: state.error!,
+                    onButtonPressed: () =>
+                        context.read<HomeBloc>().add(HomeRetryRequested()),
+                  );
+              }
+            },
+          ),
         ),
       ),
     );
